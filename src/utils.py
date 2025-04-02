@@ -242,3 +242,9 @@ def convert_df(df):
 
 def get_status( response ):
     return float( response.content.decode().split( '[' )[1].split( ']' )[0] ) 
+
+
+        
+def print_footer():
+    st.markdown('''Made with love''')
+
