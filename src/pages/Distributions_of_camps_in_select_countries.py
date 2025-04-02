@@ -68,7 +68,7 @@ def load_maps():
    keys = df.keys() 
    w_df = df.rename( columns= {'LABEL_X':'Longitude', 'LABEL_Y':'Latitude' } )
 
-   data_dir = f'{utils.root_path}/data'
+   data_dir = f'{utils.root_path}/data/'
 
    for i,f in enumerate( countries ): # lat,long of refugee camps
         k = f[:3].upper()
