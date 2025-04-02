@@ -103,24 +103,6 @@ except Exception as e:
 utils.st.title( 'Mapping hunger around the globe' )
 
 
-utils.st.write( 'See the indicators by numbers...' )
-fields = ['country', 'malnourished_2002','malnourished_2009','malnourished_2015','malnourished_2022',
-          'under5wasting_2002', 'under5wasting_2010', 'under5wasting_2017', 'under5wasting_2022',
-          'under5stunting_2002', 'under5stunting_2010'	,'under5stunting_2017', 'under5stunting_2022',
-          'under5mortality_2000','under5mortality_2008','under5mortality_2015','under5mortality_2021']
-
-utils.st.dataframe( df[ fields ] )
-
-utils.st.write( 'See the Hunger Index by numbers...' )
-utils.st.dataframe( df2 )
-
-utils.st.markdown( '''
-Above data from sheets 2 and 3 in 
-<a href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.globalhungerindex.org%2Fxlsx%2F2023.xlsx&wdOrigin=BROWSELINK">
-Excel file</a>
-''', unsafe_allow_html=True
-)
-
 
 utils.st.markdown(
 '''
@@ -145,6 +127,25 @@ try:
 except Exception as e:
   utils.st.write( e )
 
+utils.st.write( 'See the indicators by numbers...' )
+fields = ['country', 'malnourished_2002','malnourished_2009','malnourished_2015','malnourished_2022',
+          'under5wasting_2002', 'under5wasting_2010', 'under5wasting_2017', 'under5wasting_2022',
+          'under5stunting_2002', 'under5stunting_2010'	,'under5stunting_2017', 'under5stunting_2022',
+          'under5mortality_2000','under5mortality_2008','under5mortality_2015','under5mortality_2021']
+
+utils.st.dataframe( df[ fields ] )
+
+utils.st.write( 'See the Hunger Index by numbers...' )
+utils.st.dataframe( df2 )
+
+utils.st.markdown( '''
+Above data from sheets 2 and 3 in 
+<a href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.globalhungerindex.org%2Fxlsx%2F2023.xlsx&wdOrigin=BROWSELINK">
+Excel file</a>
+''', unsafe_allow_html=True
+)
+
+utils.st.header( 'References' )
 utils.st.markdown('''
     Related materials:
     https://refugees.streamlit.app/ |
