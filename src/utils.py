@@ -113,6 +113,56 @@ def read_markdown_file( f ):
     return Path( f ).read_text()
 
 
+# Camps_in_select_countries.py
+
+def get_heatmap( gdf, width=600, height=800, show_addr=False ):
+    fig = Figure( width=width, height=height)    
+    heat_data = None
+    try:
+        heat_data = [[point[0], point[1]] for point in zip(gdf.latitude,gdf.longitude) ]
+        if DEBUG:
+            st.text( heat_data[0] )
+    except Exception as e:
+        if DEBUG:
+            st.text( gdf.keys() )
+        try:
+            if DEBUG:
+                st.text( gdf.geometry )
+            heat_data = [[point.xy[1][0], point.xy[0][0]] for point in gdf.geometry ] 
+        except Exception as e:
+            st.text(e)
+            
+    rid = '%.8f' % rng.random() 
+    N=len(heat_data)
+    
+    st.write( f'Retreiving {N} camps on record...' )
+    Addr = []
+    if N>0:
+        for i, pp in enumerate( heat_data ):            
+            if i==0:
+                m = folium.Map( location=pp, zoom_start=10)                             
+            if show_addr:
+                p  = geopy.point.Point( pp[0], pp[1] )
+                gl = geopy.geocoders.Nominatim(user_agent="user%s@gmail.com" % rid ) # Without the user_agent it raises a ConfigurationError           
+                try:
+                    site = gl.reverse(p)
+                    addr = site[0]             
+                    Addr.append(addr)
+                    print( addr, end=', ')
+                    site_name = f'({pp[0]:.1f},{pp[1]:.1f}) {addr}'
+                    folium.Marker( location=pp, popup=site_name,tooltip=site_name).add_to(m)                    
+                except Exception as e:
+                    Addr.append( '' )
+                    st.write( e )      
+            else:
+                site_name = f'No.{i} ({pp[0]:.1f}, {pp[1]:.1f})'
+                folium.Marker( location=pp, popup=site_name, tooltip=site_name).add_to(m)                    
+                
+            fig.add_child(m)        
+    return fig, m, site_name, heat_data, Addr
+
+
+
 # Used by Fit_Prophet.py
 def map_loc(lx,ly, plotnow=False):
     fig = Figure(height=500,width=800)
