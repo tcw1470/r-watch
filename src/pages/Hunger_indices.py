@@ -145,5 +145,12 @@ try:
 except Exception as e:
   utils.st.write( e )
 
+utils.st.markdown('''
+    Related materials:
+    https://refugees.streamlit.app/ |
+    http://www.mcrg.ac.in/cata.htm |
+    https://resourcewatch.org/data/explore
+    '''
+)
 
 utils.print_footer()
