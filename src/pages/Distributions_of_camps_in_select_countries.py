@@ -57,7 +57,7 @@ prefices = sorted( ['tur_pntcntr_camps',
                     'Sudan_UNHCR_Refugee_11Jan21', 
                     'Eth_refugee_camps_unhcr_2019', 
                     'uga_rr_refugee_camps_polygons'] )
-countries = sorted(['Turkey', 'Sudan',  'Uganda' ]) # Ethiopia
+countries = sorted(['Turkey', 'Sudan',  'Uganda', 'Ethiopia' ]) 
 
 def load_maps():          
    hmaps, gdfs, figs = {},{},{}
@@ -67,7 +67,9 @@ def load_maps():
     
    keys = df.keys() 
    w_df = df.rename( columns= {'LABEL_X':'Longitude', 'LABEL_Y':'Latitude' } )
-   
+
+   data_dir = f'{utils.root_path}/data'
+
    for i,f in enumerate( countries ): # lat,long of refugee camps
         k = f[:3].upper()
         print( k ) 
