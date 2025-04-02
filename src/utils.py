@@ -154,3 +154,11 @@ def get_climate_data( x, y, ndays = 30, dtype=29 ):
     a = json.loads(response.content) 
     debug_str += f'Coords of queried site: {c_str} Request:\n{url} Status:\n{url1} JSON retrieved:\n{a}'
     return pd.json_normalize( a['data'] ), debug_str
+
+
+def convert_df(df):
+   return df.to_csv(index=False).encode('utf-8')
+
+
+def get_status( response ):
+    return float( response.content.decode().split( '[' )[1].split( ']' )[0] ) 
