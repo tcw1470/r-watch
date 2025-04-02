@@ -128,6 +128,18 @@ def read_markdown_file( f ):
     return Path( f ).read_text()
 
 
+# ================================= Camps_in_Gaza.py =================================
+
+@st.cache_resource
+def get_cached():
+  climate_dfs = {}  
+  for d in pale_dnames:          
+    climate_dfs[d]={}      
+    for a in pale_camps:   
+      climate_dfs[d][a] = pd.read_csv( Path( path_data, f'{a}_{d}.csv' ) )
+  return climate_dfs
+
+
 # ================================= Camps_in_select_countries.py =================================
 
 def add_overlap( world_df, map_, country, simp=None ):
