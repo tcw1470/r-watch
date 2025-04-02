@@ -109,6 +109,21 @@ dtype_fileprefs[667]='Soil_moisture_100-200cm'
 
 
 
+        
+def print_footer():
+    st.html('''
+    <script language='javascript'>
+        // Get the current year
+        const currentYear = new Date().getFullYear();
+        
+        // Set the year in the footer
+        document.getElementById("year").textContent = currentYear;
+    </script>
+    <hr>
+    <p>Made with love and hope &copy; <span id="year"></span> Refugee-Watch</p>
+    '''
+    )
+
 def read_markdown_file( f ):
     return Path( f ).read_text()
 
@@ -243,20 +258,6 @@ def convert_df(df):
 def get_status( response ):
     return float( response.content.decode().split( '[' )[1].split( ']' )[0] ) 
 
-
-        
-def print_footer():
-    st.html('''
-    <script language='javascript'>
-        // Get the current year
-        const currentYear = new Date().getFullYear();
-        
-        // Set the year in the footer
-        document.getElementById("year").textContent = currentYear;
-    </script>
-    <p>Made with love and hope &copy; <span id="year"></span> Refugee-Watch</p>
-    '''
-    )
 
 
 
