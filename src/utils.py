@@ -246,5 +246,15 @@ def get_status( response ):
 
         
 def print_footer():
-    st.markdown('''Made with love''')
+    st.html('''
+    <script>
+        // Get the current year
+        const currentYear = new Date().getFullYear();
+        
+        // Set the year in the footer
+        document.getElementById("year").textContent = currentYear;
+    </script>
+    <p>Made with love and hope &copy; <span id="year"></span> Refugee-Watch</p>
+    '''
+    )
 
