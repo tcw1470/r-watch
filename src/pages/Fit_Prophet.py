@@ -262,3 +262,5 @@ if utils.st.button('Train and forecast now!'):
             except:
                 pass
                 
+
+utils.print_footer()
