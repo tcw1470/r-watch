@@ -53,35 +53,6 @@ import utils
 DEBUG = 0
 NDAYS = 30 #365*2
  
-def get_chirps( x, y, ndays = 30, dtype=0):    
-    date_end = datetime.now() 
-    date_start = datetime.now() - timedelta( days=ndays)
-    date_end=date_end.strftime("%m/%d/%Y")
-    date_start=date_start.strftime("%m/%d/%Y")
-
-    st.text( f'{date_start}-{date_end}' )
-    rad = .02
-    c_str= f'[[[{x-rad:.4f},{y+rad:.4f}],[{x+rad:.4f}, {y+rad:.4f}], [{x+rad:.4f}, {y-rad:.4f}],[{x-rad:.4f},{y-rad:.4f}],[{x-rad:.4f},{y+rad:.4f}]]]' 
-    st.text( c_str ) 
-    url='https://climateserv.servirglobal.net/api/submitDataRequest/?datatype=' + str(dtype) + '&begintime='
-    url +=date_start + '&endtime='+ date_end +'&intervaltype=0&operationtype=5&callback=successCallback&dateType_Category=default&isZip_CurrentDataType=false&geometry={"type":"Polygon","coordinates":' 
-    url += c_str + '}' 
-    print(url) 
-    response = requests.get(url)
-    id = response.content[:].decode().split('"')[1].split('"')[0]
-    
-    sleep(2) # wait 2 seconds
-    url1 = 'https://climateserv.servirglobal.net/api/getDataRequestProgress?id='+ id 
-    url2 = 'https://climateserv.servirglobal.net/api/getDataFromRequest?id='+ id 
-    print(url2)
-    
-    response = requests.get(url2)               
-    a = json.loads(response.content) 
-    
-    print('>>>',a)
-    return pd.json_normalize( a['data'] ) 
-
-# 'uga_rr_refugee_camps_polygons',
 prefices = sorted( ['tur_pntcntr_camps', 
                     'Sudan_UNHCR_Refugee_11Jan21', 
                     'Eth_refugee_camps_unhcr_2019', 
@@ -93,7 +64,7 @@ def load_maps():
    # read in boundaries of each country
    df = pd.read_csv( Path( f"{utils.root_path}/data/ne_110m_admin_0_countries.csv") )
    w_gdf = geopandas.read_file( Path( f"{utils.root_path}/data/ne_110m_admin_0_countries.shp") )
-  
+   utils.write( 'read w_gdf') 
    keys = df.keys() 
    w_df = df.rename( columns= {'LABEL_X':'Longitude', 'LABEL_Y':'Latitude' } )
    
