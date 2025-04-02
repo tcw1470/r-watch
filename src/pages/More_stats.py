@@ -50,4 +50,4 @@ utils.st.download_button(
    key='download-global-geo-csv'
 ) 
 
-utils.st.print_footer()
+utils.print_footer()
