@@ -92,7 +92,7 @@ def load_maps():
         figs[k] = fig
 
         #hm = utils.add_overlap( w_gdf, hm0, countries[i] ) # show country's boundary        
-        plugins.HeatMap(heat_data).add_to(hm)
+        plugins.HeatMap(heat_data).add_to(hm0)
         try:
             sw = gdfs[k][['latitude','longitude']].min().values.tolist() 
             ne = gdfs[k][['latitude','longitude']].max().values.tolist()
