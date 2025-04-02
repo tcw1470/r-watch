@@ -57,7 +57,7 @@ prefices = sorted( ['tur_pntcntr_camps',
                     'Sudan_UNHCR_Refugee_11Jan21', 
                     'Eth_refugee_camps_unhcr_2019', 
                     'uga_rr_refugee_camps_polygons'] )
-countries = sorted(['Turkey', 'Sudan', 'Ethiopia', 'Uganda' ])
+countries = sorted(['Turkey', 'Sudan',  'Uganda' ]) # Ethiopia
 
 def load_maps():          
    hmaps, gdfs, figs = {},{},{}
