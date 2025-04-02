@@ -12,7 +12,6 @@ import utils
 from importlib import reload
 reload( utils )
 
-# ========================= 
 
 
 
@@ -50,6 +49,13 @@ import streamlit as st
 from streamlit_folium import st_folium, folium_static
 import utils
 
+# ================== paths ==================
+
+data_dir = f'{utils.root_path}/data/'
+
+# ========================================== 
+
+
 DEBUG = 0
 NDAYS = 30 #365*2
  
@@ -68,8 +74,7 @@ def load_maps():
    keys = df.keys() 
    w_df = df.rename( columns= {'LABEL_X':'Longitude', 'LABEL_Y':'Latitude' } )
 
-   data_dir = f'{utils.root_path}/data/'
-
+   
    for i,f in enumerate( countries ): # lat,long of refugee camps
         k = f[:3].upper()
         print( k ) 
@@ -114,9 +119,6 @@ def load_maps():
 
 
 
-# ================== paths ==================
-
-data_dir = f'{utils.root_path}/data/'
 
 utils.st.header( 'Refugee camps in select countries' )
 utils.st.write( '''
@@ -136,6 +138,8 @@ for ii in range( len(countries) ):
 
 
 utils.st.header( 'Source files' )
+utils.st.markdown( '''
+Below are the contents of ```ne_110m_admin_0_countries.csv'''.
+''' ) 
 utils.st.dataframe( world_df ) 
-utils.st.write( world_gdf ) 
    
