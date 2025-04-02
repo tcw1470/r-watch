@@ -18,7 +18,7 @@ import utils
 from importlib import reload
 reload( utils )
 
-os.chdir( f'/mount/src/{utils.repo_name}/rcamps/' )
+# os.chdir( f'/mount/src/{utils.repo_name}/rcamps/' )
 
 
 def main():
