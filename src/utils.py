@@ -114,3 +114,43 @@ dtype_fileprefs[667]='Soil_moisture_100-200cm'
 
 def read_markdown_file( f ):
     return Path( f ).read_text()
+
+
+def get_climate_data( x, y, ndays = 30, dtype=29 ):    
+    date_end = datetime.now() 
+    date_start = datetime.now() - timedelta( days=ndays)
+    date_end=date_end.strftime("%m/%d/%Y")
+    date_start=date_start.strftime("%m/%d/%Y")
+
+    #st.text( f'{date_start}-{date_end}' )
+    rad = .02
+    c_str= f'[[[{x-rad:.4f},{y+rad:.4f}],[{x+rad:.4f},{y+rad:.4f}],[{x+rad:.4f},{y-rad:.4f}],[{x-rad:.4f},{y-rad:.4f}],[{x-rad:.4f},{y+rad:.4f}]]]' 
+     
+    # Evapuation stress index      
+    url  = 'https://climateserv.servirglobal.net/api/submitDataRequest/?datatype=' + str(dtype) + '&ensemble=false&begintime='
+    url += date_start + '&endtime='+ date_end +'&intervaltype=0&operationtype=5&callback=successCallback&dateType_Category=default&isZip_CurrentDataType=false&geometry={"type":"Polygon","coordinates":' 
+    url += c_str + '}' 
+       
+    
+    response = requests.get(url)
+    id = response.content[:].decode().split('"')[1].split('"')[0]
+    
+    sleep(2) # wait 2 seconds
+    url1 = 'https://climateserv.servirglobal.net/api/getDataRequestProgress?id='+ id 
+    url2 = 'https://climateserv.servirglobal.net/api/getDataFromRequest?id='+ id 
+    print( c_str )
+    print( url   )
+    print( url1  )
+    print( url2  )     
+    debug_str = f'Data should be accessible at <a href="{url2}">this URL</a>'
+    
+    response = requests.get(url1)    
+    print('retrieve data from climateserv')
+    
+    while get_status( response ) < 100:
+        print( response, ) 
+        response = requests.get(url1)    
+    response = requests.get(url2)               
+    a = json.loads(response.content) 
+    debug_str += f'Coords of queried site: {c_str} Request:\n{url} Status:\n{url1} JSON retrieved:\n{a}'
+    return pd.json_normalize( a['data'] ), debug_str
