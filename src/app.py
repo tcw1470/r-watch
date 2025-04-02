@@ -18,9 +18,6 @@ import utils
 from importlib import reload
 reload( utils )
 
-os.chdir( f'/mount/src/{utils.repo_name}/src/' )
-
-
 def main():
   # ================== header ==================
   tit='Refugee Watch @streamlit'
