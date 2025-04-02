@@ -52,6 +52,7 @@ gparent_dir = os.path.dirname( parent_dir )
 sys.path.append(gparent_dir)
 sys.path.append(parent_dir)
 
+root_path = '/cloud/project/'
 
 repo_name = 'r-watch'
 
