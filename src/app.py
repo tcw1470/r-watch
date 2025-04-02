@@ -26,7 +26,7 @@ def main():
     page_icon="^-^",     
     initial_sidebar_state='expanded'
   )
-  utils.st.html( os.getcwd() ) 
+  st.html( os.getcwd() ) 
   
   intro_markdown = utils.read_markdown_file( utils.Path( gparent_dir, "README.md") )
   utils.st.markdown(intro_markdown, unsafe_allow_html=True)
