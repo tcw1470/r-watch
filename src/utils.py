@@ -113,7 +113,19 @@ def read_markdown_file( f ):
     return Path( f ).read_text()
 
 
-# Camps_in_select_countries.py
+# ================================= Camps_in_select_countries.py =================================
+
+def add_overlap( world_df, map_, country, simp=None ):
+    country_gdf = gpd.GeoSeries( world_df[ world_df['SOVEREIGNT'] == country ].geometry )
+    if simp is not None:
+        sim_geo = country_gdf.simplify(tolerance=simp)
+        geo_j = sim_geo.to_json()
+    else:
+        geo_j = country_gdf.to_json()
+    geo_j = folium.GeoJson(data=geo_j, style_function=lambda x: {"fillColor": "orange"})
+    geo_j.add_to( map_ )
+    return map_
+    
 
 def get_heatmap( gdf, width=600, height=800, show_addr=False ):
     fig = Figure( width=width, height=height)    
@@ -163,7 +175,7 @@ def get_heatmap( gdf, width=600, height=800, show_addr=False ):
 
 
 
-# Used by Fit_Prophet.py
+# ================================= Used by Fit_Prophet.py =================================
 def map_loc(lx,ly, plotnow=False):
     fig = Figure(height=500,width=800)
     map = folium.Map(location = [lx,ly], zoom_start = 16)
@@ -182,7 +194,7 @@ def map_loc(lx,ly, plotnow=False):
     return fig, map, site_name
 
 
-# Used by Fit_DeepAR + Fit_Prophet
+# ================================= Used by Fit_DeepAR + Fit_Prophet =================================
 
 def get_climate_data( x, y, ndays = 30, dtype=29 ):    
     date_end = datetime.now() 
