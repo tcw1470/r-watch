@@ -151,7 +151,7 @@ def add_overlap( world_df, map_, country, simp=None ):
     return map_
     
 
-def get_heatmap( gdf, width=600, height=800, show_addr=False ):
+def get_heatmap( gdf, width=1200, height=800, show_addr=False ):
     fig = Figure( width=width, height=height)    
     heat_data = None
     try:
