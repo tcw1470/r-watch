@@ -102,3 +102,5 @@ utils.st.markdown('''
 Interested visitors are encouraged to examine the density camps from other parts of the world; please
 consider this [starting point](https://en.wikipedia.org/wiki/Refugee_camp#Refugee_camps_by_country_and_population).
 ''')
+
+utils.print_footer()
