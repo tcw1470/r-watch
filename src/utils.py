@@ -53,11 +53,7 @@ sys.path.append(gparent_dir)
 sys.path.append(parent_dir)
 
 
-repo_name = 'refugee-watch'
-
-# Current . 
-# parent: /workspaces/refugee-watch/rcamps 
-# Granny: /workspaces/refugee-watch
+repo_name = 'r-watch'
 
 print( 'utils.py\n Current',os.curdir, 'parent:', parent_dir, 'Granny:', gparent_dir)
 
