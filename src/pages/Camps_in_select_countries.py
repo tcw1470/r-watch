@@ -94,7 +94,7 @@ def load_maps():
         fig, hm0, site_name, heat_data, Addr = utils.get_heatmap( gdfs[k], show_addr=False ) # plot all ref camp sites as heat map
         figs[k] = fig
 
-        #hm = utils.add_overlap( w_gdf, hm0, countries[i] ) # show country's boundary        
+        hm = utils.add_overlap( w_gdf, hm0, countries[i] ) # show country's boundary        
         plugins.HeatMap(heat_data).add_to(hm0)
         try:
             sw = gdfs[k][['latitude','longitude']].min().values.tolist() 
