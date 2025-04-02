@@ -134,6 +134,6 @@ for ii in range( len(countries) ):
 
 
 utils.st.header( 'Source files' )
-utils.st.dataframe( df ) 
-utils.st.write( w_gdf ) 
+utils.st.dataframe( world_df ) 
+utils.st.write( world_gdf ) 
    
