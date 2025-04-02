@@ -65,6 +65,9 @@ def load_maps():
    df = pd.read_csv( Path( f"{utils.root_path}/data/ne_110m_admin_0_countries.csv") )
    w_gdf = geopandas.read_file( Path( f"{utils.root_path}/data/ne_110m_admin_0_countries.shp") )
    utils.st.dataframe( df ) 
+   
+   utils.st.write( w_gdf ) 
+    
    keys = df.keys() 
    w_df = df.rename( columns= {'LABEL_X':'Longitude', 'LABEL_Y':'Latitude' } )
    
