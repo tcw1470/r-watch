@@ -136,7 +136,7 @@ def get_cached():
   for d in pale_dnames:          
     climate_dfs[d]={}      
     for a in pale_camps:   
-      climate_dfs[d][a] = pd.read_csv( Path( path_data, f'{a}_{d}.csv' ) )
+      climate_dfs[d][a] = pd.read_csv( Path( f'{root_path}/data/Gaza', f'{a}_{d}.csv' ) )
   return climate_dfs
 
 
