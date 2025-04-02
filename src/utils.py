@@ -116,6 +116,27 @@ def read_markdown_file( f ):
     return Path( f ).read_text()
 
 
+# Used by Fit_Prophet.py
+def map_loc(lx,ly, plotnow=False):
+    fig = Figure(height=500,width=800)
+    map = folium.Map(location = [lx,ly], zoom_start = 16)
+    site_name = '?'
+    try:
+        p  = geopy.point.Point(lx, ly)
+        gl = geopy.geocoders.Nominatim(user_agent="my_test") # Without the user_agent it raises a ConfigurationError.
+        site = gl.reverse(p)
+        site_name = site[0]
+    except:
+        pass
+    folium.Marker(location=[lx, ly],popup='Default popup marker',tooltip=site_name).add_to(map)
+    fig.add_child(map)
+    if plotnow:
+        folium_static( map )
+    return fig, map, site_name
+
+
+# Used by Fit_DeepAR + Fit_Prophet
+
 def get_climate_data( x, y, ndays = 30, dtype=29 ):    
     date_end = datetime.now() 
     date_start = datetime.now() - timedelta( days=ndays)
