@@ -221,3 +221,5 @@ if utils.st.button('Fetch climate data collected for this location', disabled=le
             pass
                     
          
+
+utils.print_footer()
