@@ -1,8 +1,12 @@
 # Refugee-Watch
 
-The source code of this app can be found on [GitHub](https://github.com/tcw1470/r-watch/)
+## About
 
-## Usage notes:
+- The source code of this app can be found on [GitHub](https://github.com/tcw1470/r-watch/)
+- [TL;DR](https://docs.google.com/document/d/1Bfnug4c1sEtNNPn9orecEp7OObfDtn2wWqfM5nM8Rws/)
+
+
+## Usage notes on select pages
 
 <details>
 
