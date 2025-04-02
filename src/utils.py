@@ -82,7 +82,8 @@ DEBUG=0
 path_data = Path( f'/mount/src/{repo_name}/data/' )
 path_root = Path( f'/mount/src/{repo_name}/rcamps/' )
 path_pages= Path( f'/mount/src/{repo_name}/rcamps/pages/' )
-w_gdf = geopandas.read_file( Path( gparent_dir, 'data/ne_110m_admin_0_countries.shp') )
+
+# w_gdf = geopandas.read_file( Path( gparent_dir, 'data/ne_110m_admin_0_countries.shp') )
 
 
 pale_camps = ['Beach','Burei', 'Jabal', 'Khan ','Magha',  'Nusei', 'Rafah'] # Deir
