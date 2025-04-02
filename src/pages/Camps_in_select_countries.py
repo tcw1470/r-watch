@@ -64,9 +64,6 @@ def load_maps():
    # read in boundaries of each country
    df = pd.read_csv( Path( f"{utils.root_path}/data/ne_110m_admin_0_countries.csv") )
    w_gdf = geopandas.read_file( Path( f"{utils.root_path}/data/ne_110m_admin_0_countries.shp") )
-   utils.st.dataframe( df ) 
-   
-   utils.st.write( w_gdf ) 
     
    keys = df.keys() 
    w_df = df.rename( columns= {'LABEL_X':'Longitude', 'LABEL_Y':'Latitude' } )
@@ -95,7 +92,7 @@ def load_maps():
         figs[k] = fig
 
         hm = utils.add_overlap( w_gdf, hm0, countries[i] ) # show country's boundary        
-        plugins.HeatMap(heat_data).add_to(hm0)
+        plugins.HeatMap(heat_data).add_to(hm)
         try:
             sw = gdfs[k][['latitude','longitude']].min().values.tolist() 
             ne = gdfs[k][['latitude','longitude']].max().values.tolist()
@@ -135,4 +132,8 @@ for ii in range( len(countries) ):
     utils.st.header( countries[ii] )          
     utils.st_folium( hmaps[k] )
 
-         
+
+utils.st.header( 'Source files' )
+utils.st.dataframe( df ) 
+utils.st.write( w_gdf ) 
+   
