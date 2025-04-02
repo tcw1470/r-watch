@@ -247,7 +247,7 @@ def get_status( response ):
         
 def print_footer():
     st.html('''
-    <script>
+    <script language='javascript'>
         // Get the current year
         const currentYear = new Date().getFullYear();
         
