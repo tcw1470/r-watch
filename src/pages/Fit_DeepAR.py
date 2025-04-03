@@ -223,3 +223,5 @@ if utils.st.button('Fetch climate data collected for this location', disabled=le
          
 
 utils.print_footer()
+
+print('rendered Fit_DeepAR.py')
