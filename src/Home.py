@@ -44,7 +44,7 @@ def main():
       packages += packages + f'<p>{distribution.project_name}=={distribution.version}</p>'
   
   #with st.expander('Python packages used by this app'): 
-  utils.write.html( packages ) 
+  utils.st.write( packages ) 
 
                                             
 
