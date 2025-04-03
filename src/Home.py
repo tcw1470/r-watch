@@ -32,7 +32,6 @@ def main():
   utils.st.markdown(intro_markdown, unsafe_allow_html=True)
 
   if 0:    
-
     from pip.operations import freeze    
     modules = list(
         map(lambda x: x.split('=='), freeze.freeze(local_only=True))
@@ -50,9 +49,10 @@ def main():
       
     try: 
       from pip._internal.operations import freeze      
+      utils.st.write( '1' ) 
     except ImportError: # pip < 10.0
       from pip.operations import freeze
-
+      utils.st.write( '2' ) 
     
     pkgs = freeze.freeze()
     
