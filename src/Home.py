@@ -18,8 +18,8 @@ import utils
 from importlib import reload
 reload( utils )
 
-from pip.operations import freeze  
-
+import pip
+# from pip.operations import freeze    
 def main():
   # ================== header ==================
   tit='Refugee Watch @streamlit'
@@ -33,12 +33,17 @@ def main():
   intro_markdown = utils.read_markdown_file( utils.Path( gparent_dir, "README.md") )
   utils.st.markdown(intro_markdown, unsafe_allow_html=True)
 
-  from pip.operations import freeze    
-  modules = list(
-      map(lambda x: x.split('=='), freeze.freeze(local_only=True))
-  )
+  if 0:    
+    modules = list(
+        map(lambda x: x.split('=='), freeze.freeze(local_only=True))
+    )  
+  else:    
+    modules = []
+    for i in pip.utils.get_installed_distributions():
+        modules.append((i.key, i.version))
   utils.st.header('Python packages used by this app')
   utils.st.write(modules)
+    
 
 if __name__ == '__main__':
   main()
