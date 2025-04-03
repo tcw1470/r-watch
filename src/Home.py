@@ -37,8 +37,10 @@ def main():
   working_set = pkg_resources.working_set
   
   # Iterate through the distributions (packages)
+  packages = ''
   for distribution in working_set:
-      print(f'{distribution.project_name}=={distribution.version}')
+      print( packages := packages + f'{distribution.project_name}=={distribution.version}\n')
+  utils.st.write( packages ) 
                                             
 
 if __name__ == '__main__':
