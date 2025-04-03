@@ -18,8 +18,6 @@ import utils
 from importlib import reload
 reload( utils )
 
-import pip
-# from pip.operations import freeze    
 def main():
   # ================== header ==================
   tit='Refugee Watch @streamlit'
@@ -34,15 +32,27 @@ def main():
   utils.st.markdown(intro_markdown, unsafe_allow_html=True)
 
   if 0:    
+
+    from pip.operations import freeze    
     modules = list(
         map(lambda x: x.split('=='), freeze.freeze(local_only=True))
     )  
-  else:    
+  elif 0:    
+    import pip
     modules = []
     for i in pip.utils.get_installed_distributions():
         modules.append((i.key, i.version))
-  utils.st.header('Python packages used by this app')
-  utils.st.write(modules)
+  else:
+    try: 
+      from pip._internal.operations import freeze
+    except ImportError: # pip < 10.0
+      from pip.operations import freeze
+
+    utils.st.header('Python packages used by this app')
+    pkgs = freeze.freeze()
+    for pkg in pkgs: 
+      utils.st.write(pkg)
+  
     
 
 if __name__ == '__main__':
