@@ -39,8 +39,10 @@ def main():
   # Iterate through the distributions (packages)
   packages = ''
   for distribution in working_set:
-      print( packages := packages + f'{distribution.project_name}=={distribution.version}')
-  utils.st.html( packages ) 
+      packages += packages + f'<p>{distribution.project_name}=={distribution.version}</p>'
+  
+  with utils.st.expander('Python packages used by this app'): 
+    utils.st.html( packages ) 
                                             
 
 if __name__ == '__main__':
