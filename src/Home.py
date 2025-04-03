@@ -18,6 +18,8 @@ import utils
 from importlib import reload
 reload( utils )
 
+import streamlit as st
+
 def main():
   # ================== header ==================
   tit='Refugee Watch @streamlit'
@@ -31,6 +33,14 @@ def main():
   intro_markdown = utils.read_markdown_file( utils.Path( gparent_dir, "README.md") )
   utils.st.markdown(intro_markdown, unsafe_allow_html=True)
 
+
+                                            
+
+if __name__ == '__main__':
+  main()
+
+
+
   import pkg_resources
 
   # Get the working set (all installed packages)
@@ -41,13 +51,5 @@ def main():
   for distribution in working_set:
       packages += packages + f'<p>{distribution.project_name}=={distribution.version}</p>'
   
-  with utils.st.expander('Python packages used by this app'): 
-    utils.st.html( packages ) 
-                                            
-
-if __name__ == '__main__':
-  main()
-
-
-
- 
+  with st.expander('Python packages used by this app'): 
+    st.html( packages ) 
