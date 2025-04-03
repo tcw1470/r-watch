@@ -44,10 +44,9 @@ def main():
         modules.append((i.key, i.version))
   else:
     try:
-      l = pip._internal.operations.list()
-      print( l )
+      from pip._internal.operations import list
     except Exception as e:
-      print( e ) 
+      print( 'cannot load list', e ) 
       
     try: 
       from pip._internal.operations import freeze      
@@ -61,7 +60,7 @@ def main():
     <details> 
       <summary>Python packages used by this app </summary>
     '''
-    s += ' '.join(pkgs) + '</details>'
+    s = ' '.join(pkgs) # + '</details>'
     utils.st.markdown( s )
      
 
