@@ -155,3 +155,5 @@ utils.st.markdown('''
 )
 
 utils.print_footer()
+
+print('rendered Hunger_indices.py')
