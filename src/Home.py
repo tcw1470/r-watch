@@ -13,7 +13,7 @@ sys.path.append(parent_dir)
 # parent: /workspaces/refugee-watch/rcamps 
 # Granny: /workspaces/refugee-watch
 
-print( 'apps.py\n Current',os.curdir, 'parent:', parent_dir, 'Granny:', gparent_dir)
+print( '\n Current',os.curdir, 'parent:', parent_dir, 'Granny:', gparent_dir)
 
 import utils
 from importlib import reload
@@ -36,7 +36,8 @@ def main():
  
   # Get the working set (all installed packages)
   working_set = pkg_resources.working_set
-  
+  print('Working set', working_set) 
+ 
   # Iterate through the distributions (packages)
   packages = ''
   for distribution in working_set:
