@@ -59,3 +59,5 @@ utils.st.download_button(
 ) 
 
 utils.print_footer()
+
+print('rendered More_stats.py')
