@@ -33,25 +33,25 @@ def main():
   intro_markdown = utils.read_markdown_file( utils.Path( gparent_dir, "README.md") )
   utils.st.markdown(intro_markdown, unsafe_allow_html=True)
 
- 
-  # Get the working set (all installed packages)
-  working_set = pkg_resources.working_set
-  print('Working set', working_set) 
- 
-  # Iterate through the distributions (packages)
-  packages = ''
-  for distribution in working_set:
-      packages += packages + f'<p>{distribution.project_name}=={distribution.version}</p>'
+  if 0:
+   # Get the working set (all installed packages)
+   working_set = pkg_resources.working_set
+   print('Working set', working_set) 
   
-  #with st.expander('Python packages used by this app'): 
-  utils.st.write( 'Thank you for visiting!' ) 
-  print(packages)
-  
+   # Iterate through the distributions (packages)
+   packages = ''
+   for distribution in working_set:
+       packages += packages + f'<p>{distribution.project_name}=={distribution.version}</p>'
+   
+   #with st.expander('Python packages used by this app'): 
+   
+   print(packages)
+   
 
                                             
 
 if __name__ == '__main__':
   main()
-
+  utils.st.write( 'Thank you for visiting!' ) 
 
 
