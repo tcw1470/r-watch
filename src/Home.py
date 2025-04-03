@@ -42,6 +42,9 @@ def main():
     for i in pip.utils.get_installed_distributions():
         modules.append((i.key, i.version))
   else:
+    from pkgutil import iter_modules
+    utils.st.write([p.name for p in iter_modules()])
+
     try:
       from pip._internal.operations import list
     except Exception as e:
@@ -60,8 +63,8 @@ def main():
     <details> 
       <summary>Python packages used by this app </summary>
     '''
-    s = ' '.join(pkgs) # + '</details>'
-    utils.st.markdown( s )
+    # s = ' '.join(pkgs) # + '</details>'
+    print( pkgs )
      
 
 if __name__ == '__main__':
