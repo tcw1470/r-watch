@@ -33,9 +33,9 @@ def main():
   intro_markdown = utils.read_markdown_file( utils.Path( gparent_dir, "README.md") )
   utils.st.markdown(intro_markdown, unsafe_allow_html=True)
 
-
+  from pip.operations import freeze    
   modules = list(
-    map(lambda x: x.split('=='), freeze.freeze(local_only=True))
+      map(lambda x: x.split('=='), freeze.freeze(local_only=True))
   )
   utils.st.header('Python packages used by this app')
   utils.st.write(modules)
