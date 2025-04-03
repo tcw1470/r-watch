@@ -104,3 +104,4 @@ consider this [starting point](https://en.wikipedia.org/wiki/Refugee_camp#Refuge
 ''')
 
 utils.print_footer()
+print('rendered Density.py')
