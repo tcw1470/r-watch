@@ -18,8 +18,7 @@ print( 'apps.py\n Current',os.curdir, 'parent:', parent_dir, 'Granny:', gparent_
 import utils
 from importlib import reload
 reload( utils )
-
-import streamlit as st
+ 
 
 def main():
   # ================== header ==================
