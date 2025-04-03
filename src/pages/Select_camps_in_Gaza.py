@@ -123,6 +123,7 @@ for ii,tab in enumerate(tabs):
     camp = utils.pale_camps[ ii ]
     geolocator = utils.geopy.geocoders.Nominatim(user_agent="3")
     location = geolocator.geocode( addresses[ii] )            
+    utils.st.write( location ) 
     utils.map_loc( location.latitude, location.longitude, True ) 
     for j,d in enumerate(dnames):
       if j==0:
