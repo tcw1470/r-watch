@@ -43,8 +43,14 @@ def main():
     for i in pip.utils.get_installed_distributions():
         modules.append((i.key, i.version))
   else:
+    try:
+      l = pip._internal.operations.list()
+      print( l )
+    except Exception as e:
+      print( e ) 
+      
     try: 
-      from pip._internal.operations import freeze
+      from pip._internal.operations import freeze      
     except ImportError: # pip < 10.0
       from pip.operations import freeze
 
