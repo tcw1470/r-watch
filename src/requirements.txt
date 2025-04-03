@@ -1,4 +1,3 @@
-pip
 branca # ==0.7.0
 folium # ==0.15.1
 geopy
