@@ -48,12 +48,16 @@ def main():
     except ImportError: # pip < 10.0
       from pip.operations import freeze
 
-    utils.st.header('Python packages used by this app')
-    pkgs = freeze.freeze()
-    for pkg in pkgs: 
-      utils.st.write(pkg)
-  
     
+    pkgs = freeze.freeze()
+    
+    s = '''
+    <details> 
+      <summary>Python packages used by this app </summary>
+    '''
+    s += ' '.join(pkgs) + '</details>'
+    utils.st.markdown( s )
+     
 
 if __name__ == '__main__':
   main()
