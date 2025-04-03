@@ -13,7 +13,7 @@
 <summary>Fit Prophet </summary>
 
 1) Users are required to first fetch data from Climate Serv
-2) Users may then click to train and fit a Prohet model
+2) Users may then click to train and fit a Prophet model
 
 </details> 
 
