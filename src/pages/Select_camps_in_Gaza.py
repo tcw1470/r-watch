@@ -124,7 +124,10 @@ for ii,tab in enumerate(tabs):
     geolocator = utils.geopy.geocoders.Nominatim(user_agent="3")
     location = geolocator.geocode( addresses[ii] )            
     utils.st.write( location ) 
-    utils.map_loc( location.latitude, location.longitude, True ) 
+    try:
+      utils.map_loc( location.latitude, location.longitude, True ) 
+    except Exception as e:
+      print(e)
     for j,d in enumerate(dnames):
       if j==0:
         utils.st.header( f'{ dnames[j] }' )         
