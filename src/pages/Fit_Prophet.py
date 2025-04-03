@@ -264,3 +264,5 @@ if utils.st.button('Train and forecast now!'):
                 
 
 utils.print_footer()
+
+print('rendered Fit_Prophet.py')
