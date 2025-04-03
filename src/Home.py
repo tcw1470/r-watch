@@ -1,4 +1,5 @@
 import sys, os
+import pkg_resources
 
 # Get the parent directory
 parent_dir = os.path.dirname(os.path.realpath(__file__))
@@ -33,16 +34,7 @@ def main():
   intro_markdown = utils.read_markdown_file( utils.Path( gparent_dir, "README.md") )
   utils.st.markdown(intro_markdown, unsafe_allow_html=True)
 
-
-                                            
-
-if __name__ == '__main__':
-  main()
-
-
-
-  import pkg_resources
-
+ 
   # Get the working set (all installed packages)
   working_set = pkg_resources.working_set
   
@@ -51,5 +43,13 @@ if __name__ == '__main__':
   for distribution in working_set:
       packages += packages + f'<p>{distribution.project_name}=={distribution.version}</p>'
   
-  with st.expander('Python packages used by this app'): 
-    st.html( packages ) 
+  #with st.expander('Python packages used by this app'): 
+  utils.write.html( packages ) 
+
+                                            
+
+if __name__ == '__main__':
+  main()
+
+
+
