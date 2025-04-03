@@ -39,7 +39,7 @@ def main():
   # Iterate through the distributions (packages)
   packages = ''
   for distribution in working_set:
-      print( packages := packages + f'<p>{distribution.project_name}=={distribution.version}</p>')
+      print( packages := packages + f'{distribution.project_name}=={distribution.version}')
   utils.st.html( packages ) 
                                             
 
