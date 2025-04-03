@@ -42,8 +42,13 @@ def main():
     for i in pip.utils.get_installed_distributions():
         modules.append((i.key, i.version))
   else:
-    from pkgutil import iter_modules
-    utils.st.write([p.name for p in iter_modules()])
+    from pip._internal.utils.misc import get_installed_distributions
+    p = get_installed_distributions()
+    pprint.pprint(p)
+    utils.st.write( p ) 
+
+    #from pkgutil import iter_modules
+    #utils.st.write([p.name for p in iter_modules()])
 
     try:
       from pip._internal.operations import list
