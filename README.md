@@ -1,10 +1,17 @@
 # Refugee-Watch
 
 ## About
-
+- App is also hosted on [Posit](https://tcw1470-refugee-watch.share.connect.posit.cloud/)
 - The source code of this app can be found on [GitHub](https://github.com/tcw1470/r-watch/)
 - [TL;DR](https://docs.google.com/document/d/1Bfnug4c1sEtNNPn9orecEp7OObfDtn2wWqfM5nM8Rws/)
 
+## Steps for local deployment
+
+```
+git clone https://github.com/tcw1470/r-watch.git
+pip install -r requirements.txt
+streamlit run Home.py
+```
 
 ## Usage notes on select pages
 
