@@ -1,5 +1,6 @@
 import sys, os
 import plotly.graph_objects as go  
+import pandas as pd
 
 # Get the parent directory
 parent_dir = os.path.dirname(os.path.realpath(__file__))
