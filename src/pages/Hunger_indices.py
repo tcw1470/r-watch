@@ -49,7 +49,8 @@ def add_hovers( w_c, m, highlight_col ):
   return m
 
 def get_choropleth( maps, measures_df, col, tar_col,  w_c, country_shapes ):
-  w_c[ tar_col ]= 0. 
+  #w_c[ tar_col ]= 0
+  w_c[tar_col] = pd.to_numeric(w_c[tar_col], errors='coerce').astype('float64'); 
   for i,c in enumerate(w_c.name):    
     d= measures_df[ measures_df['country'] == c][  col ]        
     d= d.replace('<','').replace('—','NaN')         
